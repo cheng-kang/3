@@ -13,11 +13,10 @@ SBControllers.controller('HomeCtrl', ['$scope',
         $scope.diffDays = Math.round(Math.abs((today.getTime() - graduationDay.getTime())/(oneDayInSecond)));
     }
 ]);
-SBControllers.controller('BrowseCtrl', ['$scope', '$routeParams',
-    function ($scope, $routeParams){
+SBControllers.controller('BrowseCtrl', ['$scope', '$routeParams', '$window',
+    function ($scope, $routeParams, $window){
         var photoId = parseInt($routeParams.photoId)
-        var photo = photos[photoId];
-        if (photo === undefined) {
+        if (photoId > photos.count || photoId < 1) {
             $window.location.href = "#404"
         } else {
             $scope.key = photoId;
