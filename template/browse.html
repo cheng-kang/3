@@ -1,0 +1,62 @@
+    <section class="separated text-align-center">
+      <div class="card inline-block width-80 max-width-500">
+        <div class="card-image">
+          <figure class="image">
+            <img src="{{ compressedUrl }}" alt="{{ desc }}">
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="content text-align-left">
+            {{ desc }}
+            <br>
+            <small><i>{{ date }}</i></small>
+            <br>
+            <small><a href="{{ url }}" target="_blank">查看原图</a></small>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="columns is-mobile separated is-hidden-touch">
+      <div class="column is-half is-offset-one-quarter">
+      <nav class="pagination">
+        <a class="button" href="#browse/{{ prev }}" ng-if="prev!=0">上一张</a>
+        <a class="button is-disabled" ng-if="prev==0">上一张</a>
+        <a class="button is-disabled" ng-if="next==0">下一张</a>
+        <a class="button" href="#browse/{{ next }}" ng-if="next!=0">下一张</a>
+        <ul>
+          <li>
+            <span>{{ key }}</span>
+          </li>
+          <li>
+            <span>/</span>
+          </li>
+          <li>
+            <span>{{ count }}</span>
+          </li>
+        </ul>
+      </nav>
+      </div>
+    </div>
+    <div class="columns is-mobile separated is-hidden-desktop">
+      <div class="column is-10 is-offset-1">
+      <nav class="pagination">
+        <a class="button" href="#browse/{{ prev }}" ng-if="prev!=0">上一张</a>
+        <a class="button is-disabled" ng-if="prev==0">上一张</a>
+        <a class="button is-disabled" ng-if="next==0">下一张</a>
+        <a class="button" href="#browse/{{ next }}" ng-if="next!=0">下一张</a>
+        <ul>
+          <li>
+            <span>{{ key }}</span>
+          </li>
+          <li>
+            <span>/</span>
+          </li>
+          <li>
+            <span>{{ count }}</span>
+          </li>
+        </ul>
+      </nav>
+      </div>
+    </div>
+    <!-- 多说评论框 start -->
+    <div id="duoshuo-commemt"></div>

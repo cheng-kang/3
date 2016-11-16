@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="SBApp">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>鄂南高中 12 届 3 班</title>
+		<link rel="stylesheet" href="css/style.css">
+
+		<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+		<link rel="manifest" href="favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+	</head>
+	<body>
+		<nav class="nav">
+			<div class="nav-left">
+				<a class="nav-item is-brand" href="#">
+					<img src="images/logo.png" alt="Bulma logo">
+				</a>
+			</div>
+			<div class="nav-center">
+				<a class="nav-item" href="#">
+					鄂南高中 12 届 3 班
+				</a>
+			</div>
+			<span id="nav-toggle" class="nav-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</span>
+			<div id="nav-menu" class="nav-right nav-menu">
+				<a class="nav-item" href="#">
+					首页
+				</a>
+				<a class="nav-item" href="#browse/1">
+					相册
+				</a>
+				<a class="nav-item" href="#logout">
+					注销
+				</a>
+			</div>
+		</nav>
+        <div ng-view></div>
+		<footer class="footer">
+			<div class="container">
+				<div class="content has-text-centered">
+					<p>
+						©️2016 <a href="http://chengkang.me">CHENGKANG</a>.
+					</p>
+				</div>
+			</div>
+		</footer>
+		<script src="js/script.js"></script>
+		<script src="js/bulma.js"></script>
+        <!-- jQuery -->
+        <script src="js/date.js"></script>
+        <!-- AngularJS -->
+        <script src="js/angular.min.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-sanitize.min.js"></script>
+        <!-- Data -->
+        <script src="js/photos.js"></script>
+        <script src="js/questions.js"></script>
+        <script src="js/answers.js"></script>
+        <!-- AppJS -->
+        <script src="app/config.js"></script>
+        <script src="app/language.js"></script>
+        <script src="app/app.js"></script>
+        <script src="app/controllers.js"></script>
+        <script src="app/services.js"></script>
+        <script src="app/filters.js"></script>
+		<!-- 多说评论框 end -->
+		<script>var duoshuoQuery = {short_name:"ohyou"};</script>
+		<script src="http://static.duoshuo.com/embed.js"></script>
+		<!-- 多说公共JS代码 end -->
+	</body>
+</html>
