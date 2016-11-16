@@ -36,7 +36,7 @@ SBControllers.controller('BrowseCtrl', ['$scope', '$routeParams', '$window',
 
             var el = document.createElement('div');//该div不需要设置class="ds-thread"
             el.setAttribute('data-thread-key', $scope.key);//必选参数
-            el.setAttribute('data-url', '#browse/'+$scope.key);//必选参数
+            el.setAttribute('data-url', 'http://chengkang.me/3/#browse/'+$scope.key);//必选参数
             DUOSHUO.EmbedThread(el);
             $('#duoshuo-commemt').append(el);
         }
