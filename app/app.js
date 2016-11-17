@@ -18,10 +18,6 @@ SBApp.config(function($routeProvider) {
 			templateUrl: 'template/browse.html',
 			controller: 'BrowseCtrl'
 		}).
-		when('/login', {
-			templateUrl: 'template/login.html',
-			controller: 'LoginCtrl'
-		}).
 		when('/logout', {
 			templateUrl: 'template/logout.html',
 			controller: 'LogoutCtrl'

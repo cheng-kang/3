@@ -6,6 +6,78 @@ var SBControllers = angular.module('SBControllers', []);
 
 SBControllers.controller('HomeCtrl', ['$scope',
     function ($scope){
+        var name = "";
+        var answer = "";
+        var questionNumber = 0;
+        $scope.question = "";
+        $scope.errorMsg2 = "";
+
+        $scope.loginStep1 = function () {
+            name = $('#login-name').val();
+
+            if ($.inArray(name, Names) == -1) {
+                $('#login-name').addClass('is-warning');
+                $('#login-name').addClass('is-outlined');
+                $('#login-name-btn').addClass('is-warning');
+                $('#login-name-btn').addClass('is-outlined');
+                $('#login-1-error').removeClass('is-hidden');
+            } else {
+                $('#login-name').removeClass('is-warning');
+                $('#login-name').removeClass('is-outlined');
+                $('#login-name-btn').removeClass('is-warning');
+                $('#login-name-btn').removeClass('is-outlined');
+                $('#login-1-error').addClass('is-hidden');
+                questionNumber = Math.floor(Math.random() * Questions.length);
+                $scope.question = Questions[questionNumber];
+                console.log(questionNumber);
+                console.log(Questions[questionNumber]);
+                $('#login-1').fadeOut(300, function () {
+                    $('#login-2').removeClass('is-hidden');
+                });
+            }
+        };
+        $scope.loginStep2 = function () {
+            answer = $('#login-answer').val();
+            if (Helper.login(name, answer, questionNumber)) {
+                $scope.name = name;
+                $scope.emoji = Emojis[name] == undefined ? "😃" : Emojis[name];
+
+                $('#login-answer').removeClass('is-warning');
+                $('#login-answer').removeClass('is-outlined');
+                $('#login-answer-btn').removeClass('is-warning');
+                $('#login-answer-btn').removeClass('is-outlined');
+                $('#login-2-error').addClass('is-hidden');
+
+                $('#modal-login').removeClass('is-active');
+            } else {
+                $scope.errorMsg2 = ErrorMsgs[questionNumber+1] == undefined ? ErrorMsgs[0] : ErrorMsgs[questionNumber+1];
+                console.log(ErrorMsgs[questionNumber+1]);
+                console.log(questionNumber+1);
+                $('#login-answer').addClass('is-warning');
+                $('#login-answer').addClass('is-outlined');
+                $('#login-answer-btn').addClass('is-warning');
+                $('#login-answer-btn').addClass('is-outlined');
+                $('#login-2-error').removeClass('is-hidden');
+            }
+        }
+        $scope.changeQuestion = function () {
+            $('#login-answer').removeClass('is-warning');
+            $('#login-answer').removeClass('is-outlined');
+            $('#login-answer-btn').removeClass('is-warning');
+            $('#login-answer-btn').removeClass('is-outlined');
+            $('#login-2-error').addClass('is-hidden');
+
+            questionNumber = Math.floor(Math.random() * Questions.length);
+            $scope.question = Questions[questionNumber];
+        }
+
+        if (!Helper.isLoggedIn()) {
+            $('#modal-login').addClass('is-active');
+        } else {
+            $scope.name = Helper.name();
+            $scope.emoji = Emojis[$scope.name] == undefined ? "😃" : Emojis[$scope.name];
+        }
+
         var oneDayInSecond = 24*60*60*1000; // hours*minutes*seconds*milliseconds
         var today = new Date();
         var graduationDay = new Date(2012,6,8);
@@ -15,9 +87,13 @@ SBControllers.controller('HomeCtrl', ['$scope',
 ]);
 SBControllers.controller('BrowseCtrl', ['$scope', '$routeParams', '$window',
     function ($scope, $routeParams, $window){
+        if (!Helper.isLoggedIn) {
+            $window.location.href = "#/";
+        }
+
         var photoId = parseInt($routeParams.photoId)
         if (photoId > photos.count || photoId < 1) {
-            $window.location.href = "#404"
+            $window.location.href = "#404";
         } else {
             $scope.key = photoId;
             $scope.desc = "一张旧照 - 暂无描述";
@@ -42,14 +118,10 @@ SBControllers.controller('BrowseCtrl', ['$scope', '$routeParams', '$window',
         }
     }
 ]);
-SBControllers.controller('LoginCtrl', ['$scope',
-    function ($scope){
-        
-    }
-]);
-SBControllers.controller('LogoutCtrl', ['$scope',
-    function ($scope){
-        
+SBControllers.controller('LogoutCtrl', ['$scope', '$window',
+    function ($scope, $window){
+        Helper.logout();
+        $window.location.href = "#404";
     }
 ]);
 

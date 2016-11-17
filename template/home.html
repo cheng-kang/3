@@ -1,28 +1,65 @@
-		<nav class="level separated">
-			<p class="level-item has-text-centered title is-3">
-				你好，迪哥😃
-			</p>
-		</nav>
-		<nav class="level separated">
-			<div class="level-item has-text-centered">
-				<p class="heading">已经高中毕业</p>
-				<p class="title">{{ diffDays }} 天</p>
+<nav class="level separated">
+	<p class="level-item has-text-centered title is-3">
+		你好，{{ name }}{{ emoji }}
+	</p>
+</nav>
+<nav class="level separated">
+	<div class="level-item has-text-centered">
+		<p class="heading">已经高中毕业</p>
+		<p class="title">{{ diffDays }} 天</p>
+	</div>
+	<div class="level-item has-text-centered">
+		<p class="heading">已经在这里签到</p>
+		<p class="title">10 人</p>
+	</div>
+	<div class="level-item has-text-centered">
+		<p class="heading">照片数</p>
+		<p class="title">155</p>
+	</div>
+	<div class="level-item has-text-centered">
+		<p class="heading">评论数</p>
+		<p class="title">599</p>
+	</div>
+</nav>
+<div class="columns is-mobile separated">
+	<div class="column is-half is-offset-one-quarter">
+		<a class="button is-outlined is-fullwidth" href="#browse/1">开始浏览</a>
+	</div>
+</div>
+<div id="modal-login" class="modal">
+	<div class="modal-background"></div>
+	<div class="modal-content">
+		<section class="hero is-fullheight is-bold">
+			<div class="hero-body">
+				<div id="login-1" class="container">
+					<h1 class="title">
+					你叫什么名字？
+					</h1>
+					<p class="control has-addons">
+						<input id="login-name" class="input is-expanded" type="text" placeholder="真实姓名">
+						<a id="login-name-btn" class="button" ng-click="loginStep1()">
+							下一步
+						</a>
+					</p>
+					<div id="login-1-error" class="notification is-warning is-hidden">
+						<small><i>诶，去小树林聊聊呗。</i></small>
+					</div>
+				</div>
+				<div id="login-2" class="container is-hidden">
+					<h1 class="title">
+					{{ question }}
+					</h1>
+					<p class="control has-addons">
+						<input id="login-answer" class="input is-expanded" type="text" placeholder="">
+						<a id="login-answer-btn" class="button" ng-click="loginStep2()">
+							提交
+						</a>
+					</p>
+					<div id="login-2-error" class="notification is-warning is-hidden">
+						<small><i>{{ errorMsg2 }}</i><a ng-click="changeQuestion()">换个问题</a></small>
+					</div>
+				</div>
 			</div>
-			<div class="level-item has-text-centered">
-				<p class="heading">已经在这里签到</p>
-				<p class="title">10 人</p>
-			</div>
-			<div class="level-item has-text-centered">
-				<p class="heading">照片数</p>
-				<p class="title">155</p>
-			</div>
-			<div class="level-item has-text-centered">
-				<p class="heading">评论数</p>
-				<p class="title">599</p>
-			</div>
-		</nav>
-		<div class="columns is-mobile separated">
-			<div class="column is-half is-offset-one-quarter">
-				<a class="button is-outlined is-fullwidth" href="#browse/1">开始浏览</a>
-			</div>
-		</div>
+		</section>
+	</div>
+</div>
